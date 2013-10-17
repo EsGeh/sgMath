@@ -1,4 +1,4 @@
-module ModGroup(
+module SGMath.ModGroup(
 	ModGroup(),
 	mg,
 	modul

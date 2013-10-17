@@ -1,4 +1,4 @@
-module GCD where
+module SGMath.GCD where
 
 import Data.Monoid
 import Data.Ratio
