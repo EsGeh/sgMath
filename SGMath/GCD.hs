@@ -14,6 +14,18 @@ gcd' x y = (recip (commonDivisor%1)) * ( (gcd nomX' nomY') % 1)
 
 lcm' x y = x * y / gcd' x y
 
+tupleFromRatio x = (numerator x, denominator x)
+
+mod' :: Integral i => (Ratio i -> Ratio i -> Ratio i)
+mod' = applyIntF mod
+
+applyIntF f x y = let
+	(numX,denX) = tupleFromRatio x
+	(numY,denY) = tupleFromRatio y
+	commonDivisor = lcm denX denY
+	in
+		(((ceiling $ x * (commonDivisor%1)) `f` (ceiling $ y * (commonDivisor%1)))%1) / (commonDivisor%1)
+
 {-
 newtype GCD = GCD { getGCD :: Rational}
 	deriving(Show)
